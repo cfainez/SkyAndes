@@ -1,0 +1,7 @@
+# Dependencias de SKYANDES
+# Instalación: python -m pip install -r requirements.txt
+#
+# Probado en desarrollo con Python 3.14 y Django 6.1.3 sobre SQLite.
+Django>=6.1,<7.0
+psycopg[binary]>=3.2,<4.0
+python-dotenv>=1.0,<2.0

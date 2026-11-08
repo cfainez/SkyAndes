@@ -1,13 +1,259 @@
+{% load static %}
 <!doctype html>
 <html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SkyAndes</title>
+    <meta name="theme-color" content="#f3f6f8">
+    <title>Sky Andes | Vuela más alto</title>
+    <link rel="stylesheet" href="{% static 'skyandes/inicio.css' %}">
 </head>
 <body>
-    <main>
-        <h1>Bienvenido a SkyAndes</h1>
-    </main>
+    <div class="page-shell">
+        <header class="site-header">
+            <a class="brand" href="#" aria-label="Sky Andes, inicio">
+                <svg class="brand-mark" viewBox="0 0 48 40" role="img" aria-label="Montañas">
+                    <path d="M1 34 15 11l9 13 7-9 16 19H1Z" fill="#087f9d"/>
+                    <path d="m15 11 9 13-9-3-7 11H1Z" fill="#efb742"/>
+                    <path d="m24 24 7-9 16 19H30Z" fill="#0b3157"/>
+                    <path d="m31 15 4 5-5 2-6 2Z" fill="#fff"/>
+                </svg>
+                <span>SKY ANDES</span>
+            </a>
+
+            <nav class="main-nav" aria-label="Navegación principal">
+                <a href="#vuelos">Vuelos</a>
+                <a href="#destinos">Destinos</a>
+                <a href="#promociones">Promociones</a>
+                <a href="#experiencias">Experiencias</a>
+                <a href="#informacion">Información</a>
+            </nav>
+
+            <div class="header-actions">
+                <a class="search-icon" href="#vuelos" aria-label="Buscar vuelos">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="10.8" cy="10.8" r="5.8" stroke="currentColor" stroke-width="2.5"/>
+                        <path d="m15.2 15.2 4.2 4.2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </a>
+                <a href="#informacion">Ayuda</a>
+                <a class="login-button" href="#sesion">Iniciar sesión</a>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero" aria-labelledby="hero-title">
+                <div class="hero-copy">
+                    <p class="eyebrow">CONECTANDO CHILE CON EL MUNDO</p>
+                    <h1 id="hero-title">Vuela más alto con Sky Andes</h1>
+                    <p class="hero-description">Descubre nuevos destinos y organiza tu viaje desde un solo lugar.</p>
+                    <a class="hero-button" href="#vuelos">Buscar vuelos</a>
+                </div>
+            </section>
+
+            <div class="content">
+                <section class="flight-search" id="vuelos" aria-labelledby="search-title">
+                    <div class="search-heading">
+                        <h2 id="search-title">Busca tu próximo vuelo</h2>
+                        <div class="trip-options" aria-label="Tipo de viaje">
+                            <button class="trip-option" type="button" aria-pressed="true">IDA Y VUELTA</button>
+                            <button class="trip-option" type="button" aria-pressed="false">SOLO IDA</button>
+                        </div>
+                    </div>
+
+                    <form class="search-fields">
+                        <div class="field">
+                            <label for="origin">ORIGEN</label>
+                            <input id="origin" name="origin" type="text" value="Santiago (SCL)">
+                        </div>
+                        <div class="field">
+                            <label for="destination">DESTINO</label>
+                            <input id="destination" name="destination" type="text" value="Lima (LIM)">
+                        </div>
+                        <div class="field">
+                            <label for="departure">IDA</label>
+                            <input id="departure" name="departure" type="text" value="12 nov 2026">
+                        </div>
+                        <div class="field">
+                            <label for="return">REGRESO</label>
+                            <input id="return" name="return" type="text" value="19 nov 2026">
+                        </div>
+                        <div class="field">
+                            <label for="passengers">PASAJEROS</label>
+                            <select id="passengers" name="passengers">
+                                <option>1 · Económica</option>
+                                <option>2 · Económica</option>
+                                <option>1 · Premium</option>
+                            </select>
+                        </div>
+                        <button class="search-submit" type="button">Buscar vuelos</button>
+                    </form>
+                    <p class="search-note">Fechas y tarifas de demostración · no representan disponibilidad real</p>
+                </section>
+
+                <section class="promotions" id="promociones" aria-labelledby="promotions-title">
+                    <div class="section-heading">
+                        <h2 id="promotions-title">Promociones para despegar</h2>
+                        <a href="#vuelos">Ver vuelos</a>
+                    </div>
+                    <div class="promotion-window">
+                        <div class="promotion-track">
+                            <div class="promotion-group">
+                        <article class="promotion-card">
+                            <img src="https://images.unsplash.com/photo-1531968455001-5c5272a41129?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Vista urbana de Lima">
+                            <div class="promotion-copy">
+                                <span class="promotion-tag">ESCAPADA URBANA</span>
+                                <h3>Descubre Lima</h3>
+                                <p>Vuela desde Santiago y disfruta la costa peruana.</p>
+                                <a href="#vuelos" class="promotion-link">Buscar vuelos <span aria-hidden="true">→</span></a>
+                            </div>
+                        </article>
+                        <article class="promotion-card">
+                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Montañas de los Andes">
+                            <div class="promotion-copy">
+                                <span class="promotion-tag">AVENTURA</span>
+                                <h3>La montaña te espera</h3>
+                                <p>Encuentra tu próxima aventura entre los Andes.</p>
+                                <a href="#vuelos" class="promotion-link">Planear viaje <span aria-hidden="true">→</span></a>
+                            </div>
+                        </article>
+                        <article class="promotion-card">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Playa tropical de aguas turquesas">
+                            <div class="promotion-copy">
+                                <span class="promotion-tag">INSPIRACIÓN DE VIAJE</span>
+                                <h3>Tu próxima historia comienza aquí</h3>
+                                <p>Explora nuevos lugares con Sky Andes.</p>
+                                <a href="#destinos" class="promotion-link">Explorar destinos <span aria-hidden="true">→</span></a>
+                            </div>
+                        </article>
+                            </div>
+                            <div class="promotion-group" aria-hidden="true" inert>
+                                <article class="promotion-card">
+                                    <img src="https://images.unsplash.com/photo-1531968455001-5c5272a41129?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="">
+                                    <div class="promotion-copy">
+                                        <span class="promotion-tag">ESCAPADA URBANA</span>
+                                        <h3>Descubre Lima</h3>
+                                        <p>Vuela desde Santiago y disfruta la costa peruana.</p>
+                                        <span class="promotion-link">Buscar vuelos <span aria-hidden="true">→</span></span>
+                                    </div>
+                                </article>
+                                <article class="promotion-card">
+                                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="">
+                                    <div class="promotion-copy">
+                                        <span class="promotion-tag">AVENTURA</span>
+                                        <h3>La montaña te espera</h3>
+                                        <p>Encuentra tu próxima aventura entre los Andes.</p>
+                                        <span class="promotion-link">Planear viaje <span aria-hidden="true">→</span></span>
+                                    </div>
+                                </article>
+                                <article class="promotion-card">
+                                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="">
+                                    <div class="promotion-copy">
+                                        <span class="promotion-tag">INSPIRACIÓN DE VIAJE</span>
+                                        <h3>Tu próxima historia comienza aquí</h3>
+                                        <p>Explora nuevos lugares con Sky Andes.</p>
+                                        <span class="promotion-link">Explorar destinos <span aria-hidden="true">→</span></span>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="promotion-note">Promociones referenciales, sujetas a disponibilidad y condiciones de cada tarifa.</p>
+                </section>
+
+                <section class="inspiration" id="destinos" aria-labelledby="inspiration-title">
+                    <div class="section-heading">
+                        <h2 id="inspiration-title">Inspírate para tu próximo viaje</h2>
+                        <a href="#destinos">Explorar destinos</a>
+                    </div>
+
+                    <div class="destination-grid" id="experiencias">
+                        <article class="destination-card">
+                            <img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Costa junto al océano Pacífico">
+                            <div class="card-copy">
+                                <h3>Lima, costa y cultura</h3>
+                                <p>Descubre una ciudad junto al Pacífico.</p>
+                                <p class="destination-price">Desde <strong>$89.990 CLP</strong></p>
+                                <p class="destination-fare">Ida y vuelta · tasas incluidas</p>
+                            </div>
+                        </article>
+                        <article class="destination-card">
+                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Cordillera de montañas nevadas al atardecer">
+                            <div class="card-copy">
+                                <h3>Aventura entre montañas</h3>
+                                <p>Ideas para viajar más allá.</p>
+                                <p class="destination-price">Desde <strong>$54.990 CLP</strong></p>
+                                <p class="destination-fare">Solo ida · tasas incluidas</p>
+                            </div>
+                        </article>
+                        <article class="destination-card" id="informacion">
+                            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Vista de un avión durante el viaje">
+                            <div class="card-copy">
+                                <h3>Tu viaje empieza aquí</h3>
+                                <p>Información para cada etapa.</p>
+                                <p class="destination-price">Desde <strong>$119.990 CLP</strong></p>
+                                <p class="destination-fare">Ida y vuelta · tasas incluidas</p>
+                            </div>
+                        </article>
+                        <article class="destination-card">
+                            <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Paisaje verde de la selva amazónica">
+                            <div class="card-copy">
+                                <h3>Amazonas por descubrir</h3>
+                                <p>Conecta con la naturaleza y sus paisajes.</p>
+                                <p class="destination-price">Desde <strong>$149.990 CLP</strong></p>
+                                <p class="destination-fare">Solo ida · tasas incluidas</p>
+                            </div>
+                        </article>
+                        <article class="destination-card">
+                            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Montaña bajo un cielo estrellado">
+                            <div class="card-copy">
+                                <h3>Noches bajo las estrellas</h3>
+                                <p>Una aventura inolvidable en el desierto.</p>
+                                <p class="destination-price">Desde <strong>$79.990 CLP</strong></p>
+                                <p class="destination-fare">Ida y vuelta · tasas incluidas</p>
+                            </div>
+                        </article>
+                        <article class="destination-card">
+                            <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Aurora luminosa sobre un paisaje">
+                            <div class="card-copy">
+                                <h3>Escapada para desconectar</h3>
+                                <p>Regálate unos días lejos de la rutina.</p>
+                                <p class="destination-price">Desde <strong>$69.990 CLP</strong></p>
+                                <p class="destination-fare">Solo ida · tasas incluidas</p>
+                            </div>
+                        </article>
+                        <article class="destination-card">
+                            <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Lago rodeado de montañas">
+                            <div class="card-copy">
+                                <h3>Lagos y aire puro</h3>
+                                <p>Descubre paisajes para recorrer sin prisa.</p>
+                                <p class="destination-price">Desde <strong>$99.990 CLP</strong></p>
+                                <p class="destination-fare">Ida y vuelta · tasas incluidas</p>
+                            </div>
+                        </article>
+                        <article class="destination-card">
+                            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Camino entre montañas">
+                            <div class="card-copy">
+                                <h3>Rutas que sorprenden</h3>
+                                <p>Elige tu próximo destino y déjate llevar.</p>
+                                <p class="destination-price">Desde <strong>$44.990 CLP</strong></p>
+                                <p class="destination-fare">Solo ida · tasas incluidas</p>
+                            </div>
+                        </article>
+                        <article class="destination-card">
+                            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Valle con lago y montañas al fondo">
+                            <div class="card-copy">
+                                <h3>Un viaje para recordar</h3>
+                                <p>Nuevos paisajes esperan por ti.</p>
+                                <p class="destination-price">Desde <strong>$129.990 CLP</strong></p>
+                                <p class="destination-fare">Ida y vuelta · tasas incluidas</p>
+                            </div>
+                        </article>
+                    </div>
+                    <p class="destination-note">Precios referenciales por persona en CLP, con tasas incluidas. Sujetos a disponibilidad y cambios; no representan tarifas en tiempo real.</p>
+                </section>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

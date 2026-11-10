@@ -49,9 +49,9 @@ backend en Django; el frontend se desarrolla aparte.
 | README backend | `README.md` |
 | README del contrato frontend | `README_FRONTEND_PROGRAMADOR_3.md` |
 
-> El proyecto **no está dentro del workspace actual** (`Documentos\Proyecto
-> predeterminado`). Trabaja siempre en la ruta del proyecto Django indicada
-> arriba. No hay repositorio git inicializado.
+> En este equipo Linux el proyecto está en `/home/fainez22/SkyAndes`
+> y el repositorio Git es <https://github.com/cfainez/SkyAndes.git>. Las rutas
+> de Windows de la tabla son históricas; usa la ruta Linux indicada.
 
 ---
 
@@ -61,9 +61,9 @@ backend en Django; el frontend se desarrolla aparte.
 |---|---|
 | Python | 3.14.x |
 | Django | 6.1.3 |
-| Base de datos de desarrollo | SQLite (`db.sqlite3`) |
-| Base de datos recomendada | PostgreSQL (configurable por `.env`) |
-| Driver PostgreSQL | `psycopg[binary]` (declarado, no instalado en el entorno actual) |
+| Base de datos de desarrollo | PostgreSQL 17 en Docker Compose (`docker-compose.yml`) |
+| Base de datos recomendada | PostgreSQL (Azure Database for PostgreSQL Flexible Server) |
+| Driver PostgreSQL | `psycopg[binary]` (instalado en `.venv`) |
 | Variables de entorno | `python-dotenv` (opcional) |
 | Zona horaria | `America/Santiago` |
 | Idioma | `es-cl` |
@@ -310,9 +310,12 @@ Excepciones de dominio:
 
 ## 10. Comandos de trabajo
 
-Ejecutar desde `C:\Users\faine\OneDrive\Desktop\SkyAndes\WebSkyandes`.
+Ejecutar desde `/home/fainez22/SkyAndes`.
 
-```powershell
+```bash
+# Levantar PostgreSQL local (Docker)
+docker compose up -d db
+
 # Verificación del proyecto
 python manage.py check
 
@@ -364,6 +367,7 @@ DB_PORT=5432
 | Archivo | Contenido |
 |---|---|
 | `README.md` | Instalación, comparación con el diagrama, modelo, reglas y servicios. |
+| `docs/BASE_DE_DATOS_LOCAL.md` | Guía de PostgreSQL local con Docker, flujo de equipo y paridad con Azure. |
 | `README_FRONTEND_PROGRAMADOR_3.md` | Contrato funcional de frontend: autenticación, catálogo, asientos, pagos, notificaciones y check-in. |
 | `AGENTS.md` | Este documento de contexto para agentes de IA. |
 

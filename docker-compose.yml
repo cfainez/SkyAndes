@@ -1,0 +1,51 @@
+# PostgreSQL local para SKYANDES.
+#
+# Uso:
+#   docker compose up -d db      # levanta la base
+#   docker compose ps            # ver estado
+#   docker compose logs -f db    # ver logs
+#   docker compose down          # detiene el contenedor (conserva los datos)
+#   docker compose down -v       # detiene y BORRA los datos locales
+#
+# La configuración se toma del archivo .env (ver .env.example).
+# La imagen usa la misma versión mayor que se recomienda en Azure
+# Database for PostgreSQL Flexible Server.
+
+name: skyandes
+
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: skyandes-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-skyandes}
+      POSTGRES_USER: ${DB_USER:-skyandes}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-skyandes}
+    ports:
+      # Solo accesible desde el propio equipo.
+      - "127.0.0.1:${DB_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    command:
+      - postgres
+      - -c
+      - shared_buffers=256MB
+      - -c
+      - work_mem=8MB
+      - -c
+      - max_connections=50
+      - -c
+      - timezone=America/Santiago
+    shm_size: 128mb
+    mem_limit: 1g
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+volumes:
+  pgdata:
+    name: skyandes_pgdata

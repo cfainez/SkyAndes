@@ -1,0 +1,31 @@
+# --- Entorno Python -------------------------------------------------------
+.venv/
+venv/
+env/
+
+# --- Variables de entorno -------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# --- Python / Django ------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+db.sqlite3
+db.sqlite3-journal
+/staticfiles/
+/media/
+
+# --- Datos locales de Docker ---------------------------------------------
+pgdata/
+
+# --- Editores y sistema ---------------------------------------------------
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

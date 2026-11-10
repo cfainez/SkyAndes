@@ -18,6 +18,11 @@ body {
     margin: 0;
     min-width: 320px;
     background: var(--page);
+    -webkit-text-size-adjust: 100%;
+}
+
+img {
+    max-width: 100%;
 }
 
 a {
@@ -41,7 +46,7 @@ select {
     justify-content: flex-end;
     padding: 10px 24px;
     color: #78889a;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: .04em;
 }
@@ -60,6 +65,7 @@ select {
 .brand {
     display: inline-flex;
     align-items: center;
+    min-height: 44px;
     gap: 9px;
     color: var(--navy);
     font-size: 14px;
@@ -83,6 +89,13 @@ select {
     font-size: 12px;
 }
 
+.main-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    white-space: nowrap;
+}
+
 .main-nav a:first-child {
     color: var(--navy);
     font-weight: 700;
@@ -97,16 +110,26 @@ select {
     font-weight: 600;
 }
 
+.header-actions > a:not(.search-icon) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+}
+
 .search-icon {
-    width: 16px;
-    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin: -14px -8px;
     color: var(--navy);
 }
 
 .search-icon svg {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 16px;
+    height: 16px;
 }
 
 .login-button,
@@ -155,7 +178,7 @@ select {
 .eyebrow {
     margin: 0 0 16px;
     color: #d3e2ef;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: .045em;
 }
@@ -186,7 +209,7 @@ select {
 .content {
     position: relative;
     z-index: 2;
-    width: calc(100% - 120px);
+    width: calc(100% - clamp(28px, 8vw, 120px));
     margin: -28px auto 0;
 }
 
@@ -217,12 +240,13 @@ select {
 }
 
 .trip-option {
-    padding: 7px 13px;
+    min-height: 32px;
+    padding: 0 13px;
     border: 0;
     border-radius: 30px;
     background: #edf2f6;
     color: #63768c;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     cursor: pointer;
 }
@@ -247,7 +271,7 @@ select {
 
 .field label {
     color: #74849a;
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 700;
 }
 
@@ -272,7 +296,8 @@ select {
 .search-note {
     margin: 15px 0 0;
     color: #97a4b3;
-    font-size: 9px;
+    font-size: 11px;
+    line-height: 1.5;
 }
 
 .promotions {
@@ -364,7 +389,7 @@ select {
     display: inline-block;
     margin-bottom: 8px;
     color: #ffda7c;
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 800;
     letter-spacing: .08em;
 }
@@ -387,6 +412,8 @@ select {
     display: inline-flex;
     align-items: center;
     gap: 7px;
+    padding-block: 6px;
+    margin-block: -6px;
     color: #ffda7c;
     font-size: 11px;
     font-weight: 700;
@@ -403,7 +430,8 @@ select {
 .promotion-note {
     margin: 10px 0 0;
     color: #97a4b3;
-    font-size: 9px;
+    font-size: 11px;
+    line-height: 1.5;
 }
 
 .inspiration {
@@ -425,8 +453,12 @@ select {
 }
 
 .section-heading a {
+    display: inline-flex;
+    align-items: center;
+    padding-block: 6px;
+    margin-block: -6px;
     color: #17668a;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
 }
 
@@ -517,7 +549,8 @@ select {
 .card-copy p {
     margin: 0;
     color: #8897a7;
-    font-size: 10px;
+    font-size: 11px;
+    line-height: 1.45;
 }
 
 .card-copy .destination-price {
@@ -535,53 +568,36 @@ select {
 .card-copy .destination-fare {
     margin-top: 5px;
     color: #17668a;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
 }
 
 .destination-note {
     margin: 12px 0 0;
     color: #8897a7;
-    font-size: 10px;
+    font-size: 11px;
     line-height: 1.5;
 }
 
-@media (max-width: 900px) {
+@media (min-width: 901px) and (max-width: 1120px) {
     .main-nav {
-        gap: 18px;
-        margin-right: 28px;
-    }
-
-    .content {
-        width: calc(100% - 48px);
-    }
-
-    .destination-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .search-fields {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-right: 16px;
     }
 }
 
-@media (max-width: 640px) {
-    .page-shell {
-        width: 100%;
-        margin: 0 auto 36px;
-    }
-
-    .topline {
-        padding: 8px 18px;
-    }
-
+/* Tablet y móvil táctil: cabecera en dos filas, menú siempre visible y
+   controles con área táctil cómoda. */
+@media (max-width: 900px) {
     .site-header {
-        min-height: 66px;
+        flex-wrap: wrap;
+        min-height: 0;
         padding: 0 18px;
     }
 
-    .main-nav {
-        display: none;
+    .brand {
+        min-height: 64px;
+        font-size: 15px;
     }
 
     .header-actions {
@@ -598,15 +614,168 @@ select {
         padding: 0 16px;
     }
 
+    .main-nav {
+        order: 3;
+        flex: 0 0 auto;
+        width: calc(100% + 36px);
+        margin: 0 -18px;
+        padding: 0 8px;
+        gap: 2px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        border-top: 1px solid #edf1f5;
+    }
+
+    .main-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .main-nav a {
+        flex: none;
+        padding: 0 11px;
+        border-radius: 6px;
+        font-size: 13px;
+    }
+
+    .main-nav a:first-child {
+        background: #eef6fa;
+    }
+
     .hero {
-        min-height: 360px;
-        padding: 42px 25px 72px;
+        padding: 40px 24px 60px;
+    }
+
+    .eyebrow {
+        font-size: 11px;
+    }
+
+    .trip-options {
+        gap: 8px;
+    }
+
+    .trip-option {
+        min-height: 40px;
+        padding: 0 14px;
+        font-size: 12px;
+    }
+
+    .field label {
+        font-size: 11px;
+    }
+
+    .field input,
+    .field select {
+        height: 48px;
+        padding: 0 12px;
+        font-size: 16px; /* 16px evita el zoom automático al enfocar en iOS */
+    }
+
+    .search-submit {
+        min-height: 44px;
+        font-size: 13px;
+    }
+
+    .search-note,
+    .promotion-note,
+    .destination-note {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    .section-heading a {
+        min-height: 44px;
+        margin-block: 0;
+        padding-block: 0;
+        font-size: 12px;
+    }
+
+    .promotion-link {
+        min-height: 44px;
+        margin-block: 0;
+        padding-block: 0;
+        font-size: 12px;
+    }
+
+    .promotion-tag {
+        font-size: 11px;
+    }
+
+    .destination-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    .destination-card img {
+        height: 150px;
+    }
+
+    .search-fields {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .promotion-copy p {
+        font-size: 12px;
+    }
+
+    .card-copy h3 {
+        font-size: 14px;
+    }
+
+    .card-copy p,
+    .card-copy .destination-price,
+    .card-copy .destination-fare {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 640px) {
+    .page-shell {
+        width: 100%;
+        margin: 0 auto 36px;
+    }
+
+    .topline {
+        padding: 8px 18px;
+    }
+
+    .site-header {
+        padding: 0 16px;
+    }
+
+    .main-nav {
+        width: calc(100% + 32px);
+        margin: 0 -16px;
+    }
+
+    .hero {
+        min-height: 340px;
+        padding: 42px 24px 74px;
         background-position: 58% center;
+    }
+
+    .eyebrow {
+        margin-bottom: 12px;
+        font-size: 11px;
     }
 
     .hero h1 {
         max-width: 300px;
-        font-size: 36px;
+        font-size: clamp(30px, 9.5vw, 38px);
+    }
+
+    .hero-description {
+        max-width: 320px;
+        margin: 12px 0 20px;
+        font-size: 15px;
+        line-height: 1.55;
+    }
+
+    .hero-button {
+        min-height: 46px;
+        padding: 0 24px;
+        font-size: 14px;
     }
 
     .content {
@@ -615,33 +784,79 @@ select {
     }
 
     .flight-search {
-        padding: 18px 16px 14px;
+        padding: 18px 16px 16px;
+        border-radius: 14px;
     }
 
     .search-heading {
         align-items: flex-start;
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
+        margin-bottom: 14px;
+    }
+
+    .search-heading h2 {
+        font-size: 18px;
+    }
+
+    .trip-options {
+        width: 100%;
+        gap: 8px;
+    }
+
+    .trip-option {
+        flex: 1;
+        min-height: 40px;
+        padding: 0 12px;
+        font-size: 12px;
     }
 
     .search-fields {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px 10px;
+        gap: 14px 10px;
+    }
+
+    .field {
+        gap: 7px;
+    }
+
+    .field label {
+        font-size: 11px;
+        letter-spacing: .02em;
+    }
+
+    .field input,
+    .field select {
+        height: 48px;
+        padding: 0 12px;
+        font-size: 16px; /* 16px evita el zoom automático al enfocar en iOS */
     }
 
     .search-submit {
         grid-column: 1 / -1;
+        min-height: 48px;
+        font-size: 14px;
+    }
+
+    .search-note {
+        margin-top: 12px;
+        font-size: 11px;
+        line-height: 1.5;
     }
 
     .promotions {
-        padding: 25px 2px 0;
+        padding: 26px 2px 0;
     }
 
     .promotion-window {
         overflow-x: auto;
         scroll-snap-type: x mandatory;
-        scrollbar-width: thin;
         -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .promotion-window::-webkit-scrollbar {
+        display: none;
     }
 
     .promotion-track {
@@ -654,16 +869,60 @@ select {
 
     .promotion-card {
         width: min(82vw, 340px);
-        min-height: 200px;
+        min-height: 210px;
         scroll-snap-align: start;
     }
 
+    .promotion-copy {
+        padding: 16px;
+    }
+
+    .promotion-tag {
+        font-size: 11px;
+    }
+
+    .promotion-copy h3 {
+        font-size: 21px;
+    }
+
+    .promotion-copy p {
+        margin-bottom: 10px;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .promotion-link {
+        min-height: 44px;
+        align-items: center;
+        font-size: 13px;
+    }
+
+    .promotion-note {
+        margin-top: 12px;
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
     .inspiration {
-        padding: 25px 2px 0;
+        padding: 26px 2px 0;
+    }
+
+    .section-heading {
+        align-items: center;
+        gap: 12px;
     }
 
     .section-heading h2 {
-        font-size: 16px;
+        font-size: 19px;
+        line-height: 1.25;
+    }
+
+    .section-heading a {
+        display: inline-flex;
+        flex: none;
+        align-items: center;
+        min-height: 44px;
+        font-size: 12px;
     }
 
     .destination-grid {
@@ -672,13 +931,66 @@ select {
     }
 
     .destination-card img {
-        height: 160px;
+        height: 168px;
+    }
+
+    .card-copy {
+        padding: 14px 16px 16px;
+    }
+
+    .card-copy h3 {
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    .card-copy p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .card-copy .destination-price {
+        margin-top: 12px;
+        font-size: 13px;
+    }
+
+    .destination-price strong {
+        font-size: 20px;
+    }
+
+    .card-copy .destination-fare {
+        font-size: 12px;
+    }
+
+    .destination-note {
+        margin-top: 14px;
+        font-size: 11px;
+        line-height: 1.55;
     }
 }
 
-@media (min-width: 641px) and (max-width: 760px) {
-    .main-nav {
+/* Dispositivos táctiles sin hover: el carrusel se desplaza con el dedo en vez de animarse */
+@media (hover: none) {
+    .promotion-track {
+        animation: none;
+    }
+
+    .promotion-window {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .promotion-window::-webkit-scrollbar {
         display: none;
+    }
+
+    .promotion-group[aria-hidden="true"] {
+        display: none;
+    }
+
+    .promotion-card {
+        scroll-snap-align: start;
     }
 }
 
@@ -689,5 +1001,14 @@ select {
 
     .search-submit {
         grid-column: auto;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .main-nav a {
+        font-size: 12.5px;
+        padding: 0 9px;
     }
 }

@@ -12,6 +12,12 @@ partir del diagrama de clases y del documento `GRUPO 1.pdf`.
 
 ## 1. Instalación
 
+> **Recomendado para el equipo:** PostgreSQL 17 en Docker Compose.
+> La guía paso a paso (instalación de Docker, contenedor, migraciones,
+> pruebas y despliegue en Azure) está en
+> [`docs/BASE_DE_DATOS_LOCAL.md`](docs/BASE_DE_DATOS_LOCAL.md).
+> SQLite queda solo como respaldo si no se crea `.env`.
+
 ```powershell
 cd C:\Users\faine\OneDrive\Desktop\SkyAndes\WebSkyandes
 
@@ -37,6 +43,13 @@ python manage.py test skyandes -v 2
 
 ### Base de datos PostgreSQL
 
+Para desarrollo local se recomienda el contenedor de
+[`docker-compose.yml`](docker-compose.yml):
+
+```bash
+docker compose up -d db
+```
+
 En `.env`:
 
 ```dotenv
@@ -44,9 +57,13 @@ DB_ENGINE=postgresql
 DB_NAME=skyandes
 DB_USER=skyandes
 DB_PASSWORD=...
-DB_HOST=localhost
+DB_HOST=127.0.0.1
 DB_PORT=5432
+DB_SSLMODE=disable
 ```
+
+En Azure Database for PostgreSQL usar `DB_SSLMODE=require` y el host del
+servidor flexible.
 
 Crear la base y el usuario (ejemplo):
 
